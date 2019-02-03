@@ -56,3 +56,7 @@ C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDire
 C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\obj\Debug\EmployeeDirectory.csproj.CoreCompileInputs.cache
 C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\obj\Debug\EmployeeDirectory.dll
 C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\obj\Debug\EmployeeDirectory.pdb
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\bin\EntityFramework.dll
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\bin\EntityFramework.SqlServer.dll
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\bin\EntityFramework.xml
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\EmployeeDirectory\EmployeeDirectory\bin\EntityFramework.SqlServer.xml
