@@ -1,7 +1,0 @@
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\bin\Debug\netcoreapp2.1\App.deps.json
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\bin\Debug\netcoreapp2.1\App.runtimeconfig.json
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\bin\Debug\netcoreapp2.1\App.runtimeconfig.dev.json
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\bin\Debug\netcoreapp2.1\App.dll
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\obj\Debug\netcoreapp2.1\App.csproj.CoreCompileInputs.cache
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\obj\Debug\netcoreapp2.1\App.AssemblyInfoInputs.cache
-C:\Users\lenovo\Documents\GitHub\Asp.net-Training\RecipeApp\App\obj\Debug\netcoreapp2.1\App.AssemblyInfo.cs
