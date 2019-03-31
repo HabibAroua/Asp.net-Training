@@ -44,5 +44,23 @@ namespace AppRecipe
                 }
             }
         }
+
+        static Boolean delete(Recipe r)
+        {
+            using (RecipesEntities context = new RecipesEntities())
+            {
+                try
+                {
+                    context.Recipes.Remove(r);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch(Exception Ex)
+                {
+                    Console.WriteLine("Error :" + Ex.Message);
+                    return false;
+                }
+            }
+        }
     }
 }
