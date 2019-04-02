@@ -8,26 +8,68 @@ namespace AppRecipe
 {
     class Program
     {
+        static int ID()
+        {
+            Console.WriteLine("Enter the ID");
+            return int.Parse(Console.ReadLine());
+        }
+
+        static string NAME()
+        {
+            Console.WriteLine("Enter the name");
+            return Console.ReadLine();
+        }
+
         static void Main(string[] args)
         {
+            int choice = -1;
+            Recipe recipe = new Recipe();
             //(localdb)\MSSQLLocalDB
-            /*
-            Recipe r = new Recipe();
-            Console.WriteLine("Donnez l'id");
-            r.Id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Donnez le nom");
-            r.Name = Console.ReadLine();
-            Boolean Test = insert(r);
-            if (Test)
+            do
             {
-                Console.WriteLine("Data inserted");
-            }
-            else
-            {
-                Console.WriteLine("Error no data inserted");
-            }
-            */
-            allRecip();
+                Console.WriteLine("_________________________Menu__________________________");
+                Console.WriteLine("1)Add new Recipe_______________________________________");
+                Console.WriteLine("2)Delete a Recipe______________________________________");
+                Console.WriteLine("3)Show All Recipes_____________________________________");
+                Console.WriteLine("4)Exit_________________________________________________");
+                Console.WriteLine("Your choice");
+                choice = int.Parse(Console.ReadLine());
+                switch(choice)
+                {
+                    case 1: recipe.Id = ID();
+                            recipe.Name = NAME();
+                            
+                            if(insert(recipe))
+                            {
+                                 Console.WriteLine("Data insrted ");
+                            }
+                            else
+                            {
+                                 Console.WriteLine("Error of inserting data");
+                            }
+                    break;
+                    case 2:  recipe.Id = ID();
+                             recipe.Name = NAME();
+                             if(delete(recipe))
+                             {
+                                   Console.WriteLine("Data removed");
+                             }
+                             else
+                             {
+                                    Console.WriteLine("Error of removing");
+                             }
+                     break;
+                    case 3 : List<Recipe> ListRecipe = new List<Recipe>();
+                             ListRecipe = allRecip();
+                             foreach (Recipe r in ListRecipe)
+                             {
+                                   Console.WriteLine("Id : " + r.Id + " Name : " + r.Name);
+                             }
+                    break;
+                    case 4 : Console.WriteLine("You exit the application");
+                    break;
+                }
+            } while (choice > 0);
             Console.ReadLine();
         }
 
@@ -67,22 +109,18 @@ namespace AppRecipe
             }
         }
 
-        static void allRecip()
+        static List<Recipe> allRecip()
         {
             using (var context = new RecipesEntities())
             {
                 try
                 {
-                    {
-                        foreach (var recipe in context.Recipes)
-                        {
-                            Console.WriteLine("Id : "+recipe.Id+" Name : " +recipe.Name);
-                        }
-                    }
+                    return context.Recipes.ToList();
                 }
                 catch(Exception Ex)
                 {
                     Console.WriteLine("Error : " + Ex.Message);
+                    return null;
                 }
             }
         }
