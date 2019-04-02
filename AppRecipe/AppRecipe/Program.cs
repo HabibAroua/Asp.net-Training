@@ -11,13 +11,14 @@ namespace AppRecipe
         static void Main(string[] args)
         {
             //(localdb)\MSSQLLocalDB
+            /*
             Recipe r = new Recipe();
             Console.WriteLine("Donnez l'id");
             r.Id = int.Parse(Console.ReadLine());
             Console.WriteLine("Donnez le nom");
             r.Name = Console.ReadLine();
-            Boolean Test=insert(r);
-            if(Test)
+            Boolean Test = insert(r);
+            if (Test)
             {
                 Console.WriteLine("Data inserted");
             }
@@ -25,6 +26,9 @@ namespace AppRecipe
             {
                 Console.WriteLine("Error no data inserted");
             }
+            */
+            allRecip();
+            Console.ReadLine();
         }
 
         static Boolean insert(Recipe r)
@@ -37,7 +41,7 @@ namespace AppRecipe
                     context.SaveChanges();
                     return true;
                 }
-                catch(Exception Ex)
+                catch (Exception Ex)
                 {
                     Console.WriteLine("Error : " + Ex.Message);
                     return false;
@@ -55,10 +59,30 @@ namespace AppRecipe
                     context.SaveChanges();
                     return true;
                 }
-                catch(Exception Ex)
+                catch (Exception Ex)
                 {
                     Console.WriteLine("Error :" + Ex.Message);
                     return false;
+                }
+            }
+        }
+
+        static void allRecip()
+        {
+            using (var context = new RecipesEntities())
+            {
+                try
+                {
+                    {
+                        foreach (var recipe in context.Recipes)
+                        {
+                            Console.WriteLine("Id : "+recipe.Id+" Name : " +recipe.Name);
+                        }
+                    }
+                }
+                catch(Exception Ex)
+                {
+                    Console.WriteLine("Error : " + Ex.Message);
                 }
             }
         }
