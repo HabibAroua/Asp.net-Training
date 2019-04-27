@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppRecipe
 {
@@ -140,6 +138,11 @@ namespace AppRecipe
                     return null;
                 }
             }
+        }
+
+        static Boolean Update(int id , Recipe r)
+        {
+            return false;
         }
     }
 }
