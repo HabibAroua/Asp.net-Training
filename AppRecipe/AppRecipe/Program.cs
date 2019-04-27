@@ -48,9 +48,9 @@ namespace AppRecipe
                                  Console.WriteLine("Error of inserting data");
                             }
                     break;
-                    case 2:  recipe.Id = ID();
-                             recipe.Name = NAME();
-                             if(delete(recipe))
+                    case 2:  
+                             
+                             if(delete(ID()))
                              {
                                    Console.WriteLine("Data removed");
                              }
@@ -91,21 +91,20 @@ namespace AppRecipe
             }
         }
 
-        static Boolean delete(Recipe r)
+        static Boolean delete(int id)
         {
-            using (RecipesEntities context = new RecipesEntities())
+            try
             {
-                try
-                {
-                    context.Recipes.Remove(r);
-                    context.SaveChanges();
-                    return true;
-                }
-                catch (Exception Ex)
-                {
-                    Console.WriteLine("Error :" + Ex.Message);
-                    return false;
-                }
+                RecipesEntities re = new RecipesEntities();
+                Recipe recipe = (Recipe)re.Recipes.Where(r => r.Id == id).First();
+                re.Recipes.Remove(recipe);
+                re.SaveChanges();
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Exception : " + Ex.Message);
+                return false;
             }
         }
 
