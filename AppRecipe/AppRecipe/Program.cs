@@ -67,7 +67,7 @@ namespace AppRecipe
                                    Console.WriteLine("Id : " + r.Id + " Name : " + r.Name);
                              }
                     break;
-                    case 4 : 
+                    case 4 : Console.WriteLine(search(ID())); 
                     break;
                     case 5 : Console.WriteLine("You exit the application");
                     break;
