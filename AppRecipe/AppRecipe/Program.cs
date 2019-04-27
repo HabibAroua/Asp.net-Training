@@ -31,7 +31,8 @@ namespace AppRecipe
                 Console.WriteLine("1)Add new Recipe_______________________________________");
                 Console.WriteLine("2)Delete a Recipe______________________________________");
                 Console.WriteLine("3)Show All Recipes_____________________________________");
-                Console.WriteLine("4)Exit_________________________________________________");
+                Console.WriteLine("4)Search Recipe________________________________________");
+                Console.WriteLine("5)Exit_________________________________________________");
                 Console.WriteLine("Your choice");
                 choice = int.Parse(Console.ReadLine());
                 switch(choice)
@@ -66,11 +67,28 @@ namespace AppRecipe
                                    Console.WriteLine("Id : " + r.Id + " Name : " + r.Name);
                              }
                     break;
-                    case 4 : Console.WriteLine("You exit the application");
+                    case 4 : 
+                    break;
+                    case 5 : Console.WriteLine("You exit the application");
                     break;
                 }
             } while (choice > 0);
             Console.ReadLine();
+        }
+
+        static Recipe search(int id)
+        {
+            try
+            {
+                RecipesEntities re = new RecipesEntities();
+                Recipe recipe = (Recipe)re.Recipes.Where(r => r.Id == id).First();
+                return recipe;
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Exception : " + Ex.Message);
+                return null;
+            }
         }
 
         static Boolean insert(Recipe r)
