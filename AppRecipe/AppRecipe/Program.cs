@@ -25,52 +25,71 @@ namespace AppRecipe
             //(localdb)\MSSQLLocalDB
             do
             {
-                Console.WriteLine("_________________________Menu__________________________");
-                Console.WriteLine("1)Add new Recipe_______________________________________");
-                Console.WriteLine("2)Delete a Recipe______________________________________");
-                Console.WriteLine("3)Show All Recipes_____________________________________");
-                Console.WriteLine("4)Search Recipe________________________________________");
-                Console.WriteLine("5)Exit_________________________________________________");
-                Console.WriteLine("Your choice");
-                choice = int.Parse(Console.ReadLine());
-                switch(choice)
+                do
                 {
-                    case 1: recipe.Id = ID();
+                    Console.WriteLine("_________________________Menu__________________________");
+                    Console.WriteLine("1)Add new Recipe_______________________________________");
+                    Console.WriteLine("2)Delete a Recipe______________________________________");
+                    Console.WriteLine("3)Show All Recipes_____________________________________");
+                    Console.WriteLine("4)Search Recipe________________________________________");
+                    Console.WriteLine("5)Edit Recipe__________________________________________");
+                    Console.WriteLine("6)Exit_________________________________________________");
+                    Console.WriteLine("Your choice");
+                    choice = int.Parse(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+                            recipe.Id = ID();
                             recipe.Name = NAME();
-                            
-                            if(insert(recipe))
+
+                            if (insert(recipe))
                             {
-                                 Console.WriteLine("Data insrted ");
+                                Console.WriteLine("Data insrted ");
                             }
                             else
                             {
-                                 Console.WriteLine("Error of inserting data");
+                                Console.WriteLine("Error of inserting data");
                             }
-                    break;
-                    case 2:  
-                             
-                             if(delete(ID()))
-                             {
-                                   Console.WriteLine("Data removed");
-                             }
-                             else
-                             {
-                                    Console.WriteLine("Error of removing");
-                             }
-                     break;
-                    case 3 : List<Recipe> ListRecipe = new List<Recipe>();
-                             ListRecipe = allRecip();
-                             foreach (Recipe r in ListRecipe)
-                             {
-                                   Console.WriteLine("Id : " + r.Id + " Name : " + r.Name);
-                             }
-                    break;
-                    case 4 : Console.WriteLine(search(ID())); 
-                    break;
-                    case 5 : Console.WriteLine("You exit the application");
-                    break;
-                }
-            } while (choice > 0);
+                            break;
+                        case 2:
+
+                            if (delete(ID()))
+                            {
+                                Console.WriteLine("Data removed");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error of removing");
+                            }
+                            break;
+                        case 3:
+                            List<Recipe> ListRecipe = new List<Recipe>();
+                            ListRecipe = allRecip();
+                            foreach (Recipe rec in ListRecipe)
+                            {
+                                Console.WriteLine("Id : " + rec.Id + " Name : " + rec.Name);
+                            }
+                            break;
+                        case 4:
+                            Console.WriteLine(search(ID()));
+                            break;
+                        case 5: Recipe r = new Recipe();
+                                r.Name = NAME();
+                                bool test = Update(ID(), r);
+                                if(test)
+                                {
+                                    Console.WriteLine("Recipe uppdated");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Error of uppdate");
+                                }
+                        break;
+                        case 6:Console.WriteLine("You exit the application");
+                        break;
+                    }
+                } while (choice > 0 && choice < 6);
+            } while (choice !=6);
             Console.ReadLine();
         }
 
@@ -140,9 +159,23 @@ namespace AppRecipe
             }
         }
 
-        static Boolean Update(int id , Recipe r)
+        static Boolean Update(int id , Recipe res)
         {
-            return false;
+            using (RecipesEntities context = new RecipesEntities())
+            {
+                try
+                {
+                    Recipe recipe = (Recipe)context.Recipes.Where(r => r.Id == id).First();
+                    recipe.Name = res.Name;
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (Exception Ex)
+                {
+                    Console.WriteLine("Error : " + Ex.Message);
+                    return false;
+                }
+            }
         }
     }
 }
