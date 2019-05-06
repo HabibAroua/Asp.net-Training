@@ -46,7 +46,11 @@ namespace web_api_dot_net_Framework.Controllers
             var json = JsonConvert.SerializeObject(myList);
             return json;
         }
-
+        [System.Web.Http.Route("api/all")]
+        public IHttpActionResult All()
+        {
+            return Ok("Hello world");
+        }
         // GET api/values/5
         public string Get(int id)
         {
