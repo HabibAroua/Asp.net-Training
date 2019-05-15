@@ -1,0 +1,16 @@
+#pos
+{
+    float : left ;
+}
+
+#map
+{
+    height: 400px;
+    width: 100%;
+}
+
+.btn btn-primary btn-lg
+{
+    height: 100%;
+    width: 1000px;
+}
