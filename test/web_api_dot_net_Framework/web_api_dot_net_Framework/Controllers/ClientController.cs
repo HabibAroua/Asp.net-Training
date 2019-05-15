@@ -30,21 +30,20 @@ namespace web_api_dot_net_Framework.Controllers
         // GET client/habib
         public List<Client> Get()
         {
-            Client c1 = new Client();
-            c1.Id = 1;
-            c1.name = "Habib";
-            Client c2 = new Client();
-            c2.Id = 2;
-            c2.name = "AbdelAziz";
-            Client c3 = new Client();
-            c3.Id = 3;
-            c3.name = "Anas";
-            List<Client> myList = new List<Client>();
-            myList.Add(c1);
-            myList.Add(c2);
-            myList.Add(c3);
-            var json = JsonConvert.SerializeObject(myList);
-            return myList;
+            using (var context = new MyContext())
+            {
+                try
+                {
+                    return context.Clients.ToList();
+                }
+                catch (Exception Ex)
+                {
+                    Console.WriteLine("Error : " + Ex.Message);
+                    return null;
+                }
+            }
+            //var json = JsonConvert.SerializeObject(myList);
+            //return myList;
         }
         [System.Web.Http.Route("api/all")]
         public IHttpActionResult All()
@@ -58,15 +57,50 @@ namespace web_api_dot_net_Framework.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("api/client/values")]
+        public string Post([FromBody]Client value)
         {
-
+            using (MyContext context = new MyContext())
+            {
+                try
+                {
+                    context.Clients.Add(value);
+                    context.SaveChanges();
+                    return "Element inserted ...";
+                }
+                catch (Exception Ex)
+                {
+                    Console.WriteLine("Error : " + Ex.Message);
+                    return "Error : "+Ex.Message;
+                }
+            }
         }
 
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("api/client/update")]
+        public string update([FromBody] Client c)
+        {
+            using (MyContext context = new MyContext())
+            {
+                try
+                {
+                    Client client = (Client)context.Clients.Where(r => r.Id == c.Id).First();
+                    client.name = c.name;
+                    context.SaveChanges();
+                    return "Data updated";
+                }
+                catch (Exception Ex)
+                {
+                    Console.WriteLine("Error : " + Ex.Message);
+                    return "Error "+Ex.Message;
+                }
+            }
+        }
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)
         {
-
+            Ok(value);
         }
 
         // DELETE api/values/5
