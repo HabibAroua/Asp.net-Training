@@ -5,138 +5,54 @@ import axios from "axios";
 
 class Navbar extends Component
 {
-    state=
-        {
-            nb:[]
-        }
 
-    componentDidMount()
-     {
-         const token=localStorage.usertoken;
-         const decode=jwt_decode(token);
-         //alert(decode.id)
-         axios.post("http://localhost:5000/notifications/nbNotification",{
-             idu:decode.id
-         })
-             .then(res=>
-             {
-                 this.setState(
-                     {
-                         nb : res.data
-                     }
-                 )
-             });
-     }
-    logOut(e)
-    {
-        e.preventDefault();
-        localStorage.removeItem('usertoken');
-        this.props.history.push('/');
-    }
+
 
     render()
     {
-        const loginRegLink=(
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to='/login' className="nav-link">
-                        Login
-                        {localStorage.usertoken}
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='/login' className="nav-link">
-                        Login User
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/register" className="nav-link">
-                        Register
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/allObject" className="nav-link">
-                        All Objects
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/map" className="nav-link">
-                        Map
-                    </Link>
-                </li>
-            </ul>
-        )
         const userLink = (
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/profile" className="nav-link">
-                        My Profile
+                    <Link to="/admin" className="nav-link">
+                        Gestion Admin
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/register" className="nav-link">
-                        User Management
+                    <Link to="/bloc" className="nav-link">
+                        Gestion Bloc
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/statistics" className="nav-link">
-                        Statistics
+                    <Link to="/categorie" className="nav-link">
+                        Gestion Categorie
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/notification" className="nav-link">
-                        Notifications ({this.state.nb})
+                    <Link to="/casier" className="nav-link">
+                        Gestion Casier
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/order" className="nav-link">
-                        Order
+                    <Link to="/client" className="nav-link">
+                        Gestion Client
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/map" className="nav-link">
-                        Map
+                    <Link to="/employer" className="nav-link">
+                        Gestion Employer
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        )
-        const userSimple = (
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/statistics" className="nav-link">
-                        Statistics
+                    <Link to="/fournisseur" className="nav-link">
+                        Gestion Fournisseur
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/notification" className="nav-link">
-                        Notifications
+                    <Link to="/produit" className="nav-link">
+                        Gestion Produit
                     </Link>
                 </li>
-                <li className="nav-item">
-                    <Link to="/order" className="nav-link">
-                        Order
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/allObject" className="nav-link">
-                        All Objects
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/map" className="nav-link">
-                        Map1
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                        Logout
-                    </a>
-                </li>
+
             </ul>
         )
         return(
@@ -161,7 +77,7 @@ class Navbar extends Component
                             </li>
                         </ul>
                     </div>
-                    {localStorage.usertoken ? userLink: loginRegLink}
+                    {userLink}
                 </div>
             </nav>
         )
