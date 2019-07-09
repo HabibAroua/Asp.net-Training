@@ -1,0 +1,13 @@
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\AppRecipe.exe.config
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\AppRecipe.exe
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\AppRecipe.pdb
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\EntityFramework.dll
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\EntityFramework.xml
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\obj\Debug\AppRecipe.csprojAssemblyReference.cache
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\obj\Debug\AppRecipe.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\obj\Debug\AppRecipe.csproj.CopyComplete
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\obj\Debug\AppRecipe.exe
+C:\Users\lenovo\Documents\GitHub\Asp.net-Training\AppRecipe\AppRecipe\obj\Debug\AppRecipe.pdb
